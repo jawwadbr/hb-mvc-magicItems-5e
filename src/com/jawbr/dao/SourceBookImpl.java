@@ -6,9 +6,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.jawbr.entity.SourceBook;
 
+@Repository
 public class SourceBookImpl implements SourceBookDAO {
 
 	// Vem do xml de config bean sessionFactory
@@ -22,7 +24,7 @@ public class SourceBookImpl implements SourceBookDAO {
 		Session session =  sessionFactory.getCurrentSession();
 				
 		// Query para pegar todos os sourceBooks
-		Query<SourceBook> q = session.createQuery("from magic_items", SourceBook.class);
+		Query<SourceBook> q = session.createQuery("from SourceBook", SourceBook.class);
 				
 		// Pegar todos os items
 		List<SourceBook> sources = q.getResultList();

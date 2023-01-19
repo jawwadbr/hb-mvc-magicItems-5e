@@ -6,9 +6,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.jawbr.entity.EquipmentCategory;
 
+@Repository
 public class EquipmentCategoryDAOImpl implements EquipmentCategoryDAO {
 
 	// Vem do xml de config bean sessionFactory
@@ -22,7 +24,7 @@ public class EquipmentCategoryDAOImpl implements EquipmentCategoryDAO {
 		Session session =  sessionFactory.getCurrentSession();
 		
 		// Query
-		Query<EquipmentCategory> q = session.createQuery("from equipment_category", EquipmentCategory.class);
+		Query<EquipmentCategory> q = session.createQuery("from EquipmentCategory", EquipmentCategory.class);
 		
 		// resultList
 		List<EquipmentCategory> equips = q.getResultList();

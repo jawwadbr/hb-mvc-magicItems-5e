@@ -13,6 +13,7 @@ public class EquipmentCategory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	
 	@Column(name = "indexname")
@@ -56,7 +57,7 @@ public class EquipmentCategory {
 
 	@Override
 	public String toString() {
-		return "EquipmentCategory [id=" + id + ", indexName=" + indexName + ", categoryName=" + categoryName + "]";
+		return categoryName;
 	}
 	
 }

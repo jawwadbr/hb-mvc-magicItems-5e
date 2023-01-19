@@ -44,7 +44,8 @@ public class SourceBook {
 
 	@Override
 	public String toString() {
-		return "SourceBook [id=" + id + ", bookName=" + bookName + "]";
+		System.out.println(bookName);
+		return bookName;
 	}
 	
 }

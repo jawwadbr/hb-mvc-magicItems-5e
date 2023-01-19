@@ -7,4 +7,6 @@ import com.jawbr.entity.MagicItems;
 public interface MagicItemsService {
 
 	public List<MagicItems> getMagicItems();
+
+	public MagicItems getMagicItems(int id);
 }

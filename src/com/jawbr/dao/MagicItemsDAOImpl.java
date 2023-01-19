@@ -6,9 +6,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.jawbr.entity.MagicItems;
 
+@Repository
 public class MagicItemsDAOImpl implements MagicItemsDAO {
 
 	// Vem do xml de config bean sessionFactory
@@ -23,12 +25,20 @@ public class MagicItemsDAOImpl implements MagicItemsDAO {
 		Session session =  sessionFactory.getCurrentSession();
 		
 		// Query para pegar todos os items
-		Query<MagicItems> q = session.createQuery("from magic_items", MagicItems.class);
+		Query<MagicItems> q = session.createQuery("from MagicItems", MagicItems.class);
 		
 		// Pegar todos os items
 		List<MagicItems> items = q.getResultList();
 		
 		return items;
+	}
+
+	@Override
+	public MagicItems getMagicItems(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		return session.get(MagicItems.class ,id);
 	}
 
 }
