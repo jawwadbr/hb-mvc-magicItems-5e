@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
@@ -45,7 +46,7 @@
 					
 					<tr>
 						<td>
-							<a href=${checkItem}>${tempItem.itemName}</a>
+							<a href=${checkItem }>${tempItem.itemName}</a>
 						</td>
 						<!--<td>${tempItem.itemName}</td>-->
 						<td>${tempItem.rarity}</td>
