@@ -41,4 +41,12 @@ public class MagicItemsDAOImpl implements MagicItemsDAO {
 		return session.get(MagicItems.class ,id);
 	}
 
+	@Override
+	public void saveMagicItem(MagicItems item) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		session.saveOrUpdate(item);
+	}
+
 }

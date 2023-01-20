@@ -44,7 +44,6 @@ public class SourceBook {
 
 	@Override
 	public String toString() {
-		System.out.println(bookName);
 		return bookName;
 	}
 	

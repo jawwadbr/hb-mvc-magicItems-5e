@@ -26,6 +26,11 @@
 	
 	<div id="container">
 		<div id="content">
+		
+			<!-- Botão para adicionar item mágico -->
+			<input type="button" value="Add Magic Item"
+				onclick="window.location.href='formAddItems'; return false"
+				class="add-button" />
 			
 			<!-- HTML table para listar os items -->
 			<table>

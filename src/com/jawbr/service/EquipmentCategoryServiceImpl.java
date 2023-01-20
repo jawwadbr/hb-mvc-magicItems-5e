@@ -22,4 +22,9 @@ public class EquipmentCategoryServiceImpl implements EquipmentCategoryService {
 		return equipmentCategoryDAO.getEquipmentCategory();
 	}
 
+	@Override
+	public EquipmentCategory getEquipmentCategory(int id) {
+		return equipmentCategoryDAO.getEquipmentCategory(id);
+	}
+
 }

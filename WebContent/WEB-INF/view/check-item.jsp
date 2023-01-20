@@ -4,17 +4,24 @@
 
 <head>
 	
-	<title>${item.indexName}</title>
+	<title>D&amp;D 5e Magic Items</title>
 
 </head>
 
 <body>
 
 	<div id="wrapper">
+	
+		<p>
+			<a href="${pageContext.request.contextPath}/items/list">Back to List</a>
+		</p>
+	
 		<div id="header">
 			<h1>${item.itemName}</h1>
 		</div>
 		<div id="pageContect">
+			${item.descr_top}
+			<br><br>
 			${item.descr_down}
 		</div>
 		
@@ -28,6 +35,7 @@
 				Item Rarity: ${item.rarity}
 			</div>
 		</div>
+		
 	</div>
 </body>
 

@@ -58,6 +58,18 @@ public class MagicItems {
 		this.sourceBook = sourceBook;
 	}
 
+	public MagicItems(String itemName, String descr_top, String descr_down, String rarity,
+			EquipmentCategory equipCategory, SourceBook sourceBook) {
+		this.itemName = itemName;
+		this.descr_top = descr_top;
+		this.descr_down = descr_down;
+		this.rarity = rarity;
+		this.equipCategory = equipCategory;
+		this.sourceBook = sourceBook;
+		
+		this.descr = this.descr_top + "\n " + this.descr_down;
+	}
+
 	public int getId() {
 		return id;
 	}

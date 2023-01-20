@@ -28,4 +28,10 @@ public class MagicItemsServiceImpl implements MagicItemsService {
 		return magicItemsDAO.getMagicItems(id);
 	}
 
+	@Override
+	@Transactional
+	public void saveMagicItem(MagicItems item) {
+		magicItemsDAO.saveMagicItem(item);
+	}
+
 }

@@ -7,4 +7,6 @@ import com.jawbr.entity.EquipmentCategory;
 public interface EquipmentCategoryService {
 
 	public List<EquipmentCategory> getEquipmentCategory();
+
+	public EquipmentCategory getEquipmentCategory(int id);
 }

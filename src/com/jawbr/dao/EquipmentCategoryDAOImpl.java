@@ -32,4 +32,12 @@ public class EquipmentCategoryDAOImpl implements EquipmentCategoryDAO {
 		return equips;
 	}
 
+	@Override
+	public EquipmentCategory getEquipmentCategory(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		return session.get(EquipmentCategory.class, id);
+	}
+
 }

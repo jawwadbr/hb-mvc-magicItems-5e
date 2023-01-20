@@ -9,4 +9,6 @@ public interface MagicItemsService {
 	public List<MagicItems> getMagicItems();
 
 	public MagicItems getMagicItems(int id);
+
+	public void saveMagicItem(MagicItems item);
 }
