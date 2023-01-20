@@ -42,17 +42,18 @@
 					</tr>
 					
 					<tr>
-					<!-- PRECISO FAZER UMA FORMA DE AUTO SELECIONAR QUANDO DAR UPDATE ITEM -->
-						<td><label>Item Rarity:</label></td>
-						<td><form:select path="rarity" name="rarity">
-							<option value="Common">Common</option>
-							<option value="Uncommon">Uncommon</option>
-							<option value="Rare">Rare</option>
-							<option value="Very Rare">Very Rare</option>
-							<option value="Legendary">Legendary</option>
-							<option value="Varies">Varies</option>
-							<option value="Artifact">Artifact</option>
-						</form:select></td>
+  						<td><label>Item Rarity:</label></td>
+  						<td>
+					    <form:select path="rarity" name="rarity" selected="item.rarity">
+						  <form:option value="Common">Common</form:option>
+						  <form:option value="Uncommon">Uncommon</form:option>
+						  <form:option value="Rare">Rare</form:option>
+						  <form:option value="Very Rare">Very Rare</form:option>
+						  <form:option value="Legendary">Legendary</form:option>
+						  <form:option value="Varies">Varies</form:option>
+						  <form:option value="Artifact">Artifact</form:option>
+						</form:select>
+					  </td>
 					</tr>
 					
 					<tr>

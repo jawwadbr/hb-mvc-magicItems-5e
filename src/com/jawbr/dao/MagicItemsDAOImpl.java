@@ -13,21 +13,21 @@ import com.jawbr.entity.MagicItems;
 @Repository
 public class MagicItemsDAOImpl implements MagicItemsDAO {
 
-	// Vem do xml de config bean sessionFactory
+	// Comes from the xml config sessionFactory
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
-	// Transactional vai ser feito pelo Service Layer
+	// Transactional will be made from the Service Layer
 	public List<MagicItems> getMagicItems() {
 		
-		// Pegar a session atual
+		// get current session
 		Session session =  sessionFactory.getCurrentSession();
 		
-		// Query para pegar todos os items
+		// Query to get all items
 		Query<MagicItems> q = session.createQuery("from MagicItems", MagicItems.class);
 		
-		// Pegar todos os items
+		// get result list
 		List<MagicItems> items = q.getResultList();
 		
 		return items;

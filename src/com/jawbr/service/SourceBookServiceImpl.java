@@ -12,7 +12,7 @@ import com.jawbr.entity.SourceBook;
 @Service
 public class SourceBookServiceImpl implements SourceBookService {
 
-	// Injectar DAO
+	// Inject DAO
 	@Autowired
 	private SourceBookDAO sourceBookDAO;
 	

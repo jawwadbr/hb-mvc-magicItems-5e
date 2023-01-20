@@ -48,9 +48,7 @@ public class MagicItemsController {
 		
 		MagicItems item = magicItemService.getMagicItems(id);
 		
-		if(item.getDescr_top() == "" || item.getDescr_top() == null) {
-			SplitDescr.splitDescr(item);
-		}
+		SplitDescr.splitDescr(item);
 		
 		model.addAttribute("item" ,item);
 		
@@ -64,17 +62,17 @@ public class MagicItemsController {
 		
 		model.addAttribute("item" ,item);
 		
-		// Pegar todos source books
+		// Get all source books
 		List<SourceBook> source_bookList = sourceBookService.getSourceBook();
 		
-		// Adicionar os books no model
+		// add books in model
 		model.addAttribute("source_bookList", source_bookList);
 		model.addAttribute("book", new SourceBook());
 		
-		// Pegar todos os equipCategory
+		// Get all equipCategory
 		List<EquipmentCategory> equip_list = equipCategoryService.getEquipmentCategory();
 		
-		// adicionar os equipCaegory no model
+		// add equipCaegory in model
 		model.addAttribute("equip_list", equip_list);
 		model.addAttribute("equipC", new EquipmentCategory());
 		
@@ -84,10 +82,10 @@ public class MagicItemsController {
 	@PostMapping("saveItem")
 	public String saveItem(@ModelAttribute("item") MagicItems item) {
 		
-		String tempDescr = item.getDescr_top() + "\n " + item.getDescr_down();
+		String tempDescr = item.getDescr_top() + "\n" + item.getDescr_down();
 		item.setDescr(tempDescr);
 		
-		// Salvar novo item
+		// Save new item
 		magicItemService.saveMagicItem(item);
 		
 		return "redirect:/items/list";
@@ -107,23 +105,21 @@ public class MagicItemsController {
 		
 		MagicItems item = magicItemService.getMagicItems(id);
 		
-		if(item.getDescr_top() == "" || item.getDescr_top() == null) {
-			SplitDescr.splitDescr(item);
-		}
+		SplitDescr.splitDescr(item);
 		
 		model.addAttribute("item", item);
 		
-		// Pegar todos source books
+		// Get all source books
 		List<SourceBook> source_bookList = sourceBookService.getSourceBook();
 				
-		// Adicionar os books no model
+		// add books in model
 		model.addAttribute("source_bookList", source_bookList);
 		model.addAttribute("book", new SourceBook());
 				
-		// Pegar todos os equipCategory
+		// Get all equipCategory
 		List<EquipmentCategory> equip_list = equipCategoryService.getEquipmentCategory();
 				
-		// adicionar os equipCaegory no model
+		// add equipCaegory in model
 		model.addAttribute("equip_list", equip_list);
 		model.addAttribute("equipC", new EquipmentCategory());
 		

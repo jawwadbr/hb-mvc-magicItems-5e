@@ -67,7 +67,7 @@ public class MagicItems {
 		this.equipCategory = equipCategory;
 		this.sourceBook = sourceBook;
 		
-		this.descr = this.descr_top + "\n " + this.descr_down;
+		this.descr = this.descr_top + "\n" + this.descr_down;
 	}
 
 	public int getId() {

@@ -3,11 +3,13 @@ package com.jawbr.util;
 import com.jawbr.entity.MagicItems;
 
 public class SplitDescr {
-	
-	// Metodo para dividir a descrição do item magico
+
+	// Method to split the Descr, this is needed because of how the DB was made
 	public static void splitDescr(MagicItems item) {
-		String[] s = item.getDescr().split("\n");
-		item.setDescr_top(s[0]);
-		item.setDescr_down(s[1]);
+		if(item.getDescr_top() == "" || item.getDescr_top() == null) {
+			String[] s = item.getDescr().split("\n");
+			item.setDescr_top(s[0]);
+			item.setDescr_down(s[1]);
+		}
 	}
 }

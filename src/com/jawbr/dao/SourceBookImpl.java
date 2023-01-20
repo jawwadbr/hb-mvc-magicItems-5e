@@ -13,20 +13,20 @@ import com.jawbr.entity.SourceBook;
 @Repository
 public class SourceBookImpl implements SourceBookDAO {
 
-	// Vem do xml de config bean sessionFactory
+	// Comes from the xml config sessionFactory
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
 	public List<SourceBook> getSourceBook() {
 		
-		// Pegar a session atual
+		// get current session
 		Session session =  sessionFactory.getCurrentSession();
 				
-		// Query para pegar todos os sourceBooks
+		// Query to get all source book
 		Query<SourceBook> q = session.createQuery("from SourceBook", SourceBook.class);
 				
-		// Pegar todos os items
+		// get result list
 		List<SourceBook> sources = q.getResultList();
 		
 		return sources;

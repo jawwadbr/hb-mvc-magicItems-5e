@@ -12,7 +12,7 @@ import com.jawbr.entity.MagicItems;
 @Service
 public class MagicItemsServiceImpl implements MagicItemsService {
 
-	// Injetar o DAO
+	// Inject DAO
 	@Autowired
 	private MagicItemsDAO magicItemsDAO;
 	

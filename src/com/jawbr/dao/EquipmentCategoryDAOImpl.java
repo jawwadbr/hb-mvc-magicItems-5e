@@ -13,14 +13,14 @@ import com.jawbr.entity.EquipmentCategory;
 @Repository
 public class EquipmentCategoryDAOImpl implements EquipmentCategoryDAO {
 
-	// Vem do xml de config bean sessionFactory
+	// Comes from the xml config sessionFactory
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
 	public List<EquipmentCategory> getEquipmentCategory() {
 		
-		// Pegar a session atual
+		// get current session
 		Session session =  sessionFactory.getCurrentSession();
 		
 		// Query

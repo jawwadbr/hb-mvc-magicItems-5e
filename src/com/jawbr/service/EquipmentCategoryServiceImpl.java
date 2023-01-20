@@ -12,7 +12,7 @@ import com.jawbr.entity.EquipmentCategory;
 @Service
 public class EquipmentCategoryServiceImpl implements EquipmentCategoryService {
 
-	// Injetar DAO
+	// Inject DAO
 	@Autowired
 	private EquipmentCategoryDAO equipmentCategoryDAO;
 	
