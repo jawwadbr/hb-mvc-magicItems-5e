@@ -34,4 +34,10 @@ public class MagicItemsServiceImpl implements MagicItemsService {
 		magicItemsDAO.saveMagicItem(item);
 	}
 
+	@Override
+	@Transactional
+	public void deleteMagicItem(int id) {
+		magicItemsDAO.deleteMagicItem(id);
+	}
+
 }

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +20,8 @@
 		<div id="header">
 			<h1>${item.itemName}</h1>
 		</div>
-		<div id="pageContect">
+		
+		<div id="pageContext">
 			${item.descr_top}
 			<br><br>
 			${item.descr_down}
@@ -35,6 +37,16 @@
 				Item Rarity: ${item.rarity}
 			</div>
 		</div>
+		
+		<c:url var="updateLink" value="/items/itemFormForUpdate">
+			<c:param name="itemId" value="${item.id}"></c:param>
+		</c:url>
+		
+		<br>
+		<!-- Botão para dar update no item -->
+		<input type="button" value="Update Item"
+				onclick="window.location.href='${updateLink}'; return false"
+				class="update-button">
 		
 	</div>
 </body>

@@ -11,4 +11,6 @@ public interface MagicItemsService {
 	public MagicItems getMagicItems(int id);
 
 	public void saveMagicItem(MagicItems item);
+
+	public void deleteMagicItem(int id);
 }

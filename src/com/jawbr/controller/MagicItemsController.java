@@ -92,4 +92,41 @@ public class MagicItemsController {
 		
 		return "redirect:/items/list";
 	}
+	
+	@GetMapping("/delete")
+	public String deleteMagicItem(@RequestParam("itemId") int id) {
+		
+		// delete the item
+		magicItemService.deleteMagicItem(id);
+		
+		return "redirect:/items/list";
+	}
+	
+	@GetMapping("itemFormForUpdate")
+	public String itemFormForUpdate(@RequestParam("itemId") int id, Model model) {
+		
+		MagicItems item = magicItemService.getMagicItems(id);
+		
+		if(item.getDescr_top() == "" || item.getDescr_top() == null) {
+			SplitDescr.splitDescr(item);
+		}
+		
+		model.addAttribute("item", item);
+		
+		// Pegar todos source books
+		List<SourceBook> source_bookList = sourceBookService.getSourceBook();
+				
+		// Adicionar os books no model
+		model.addAttribute("source_bookList", source_bookList);
+		model.addAttribute("book", new SourceBook());
+				
+		// Pegar todos os equipCategory
+		List<EquipmentCategory> equip_list = equipCategoryService.getEquipmentCategory();
+				
+		// adicionar os equipCaegory no model
+		model.addAttribute("equip_list", equip_list);
+		model.addAttribute("equipC", new EquipmentCategory());
+		
+		return "addItems-form";
+	}
 }

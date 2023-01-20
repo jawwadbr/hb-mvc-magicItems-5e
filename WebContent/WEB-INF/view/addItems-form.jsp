@@ -33,25 +33,26 @@
 					
 					<tr>
 						<td><label>Attributes:</label></td>
-						<td><form:input path="descr_top" /></td>
+						<td><form:textarea path="descr_top" rows="3" cols="50"/></td>
 					</tr>
 					
 					<tr>
 						<td><label>Description:</label></td>
-						<td><form:input path="descr_down" /></td>
+						<td><form:textarea path="descr_down" rows="10" cols="50"/></td>
 					</tr>
 					
 					<tr>
+					<!-- PRECISO FAZER UMA FORMA DE AUTO SELECIONAR QUANDO DAR UPDATE ITEM -->
 						<td><label>Item Rarity:</label></td>
-						<td><select name="rarity">
-							<option>Common</option>
-							<option>Uncommon</option>
-							<option>Rare</option>
-							<option>Very Rare</option>
-							<option>Legendary</option>
-							<option>Varies</option>
-							<option>Artifact</option>
-						</select></td>
+						<td><form:select path="rarity" name="rarity">
+							<option value="Common">Common</option>
+							<option value="Uncommon">Uncommon</option>
+							<option value="Rare">Rare</option>
+							<option value="Very Rare">Very Rare</option>
+							<option value="Legendary">Legendary</option>
+							<option value="Varies">Varies</option>
+							<option value="Artifact">Artifact</option>
+						</form:select></td>
 					</tr>
 					
 					<tr>

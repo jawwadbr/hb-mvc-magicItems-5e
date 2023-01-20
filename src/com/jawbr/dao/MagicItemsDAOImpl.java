@@ -49,4 +49,15 @@ public class MagicItemsDAOImpl implements MagicItemsDAO {
 		session.saveOrUpdate(item);
 	}
 
+	@Override
+	public void deleteMagicItem(int id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		MagicItems delItem = getMagicItems(id);
+		
+		session.delete(delItem);
+		
+	}
+
 }

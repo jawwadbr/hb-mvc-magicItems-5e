@@ -39,6 +39,7 @@
 					<th>Rarity</th>
 					<th>Equipment Type</th>
 					<th>Source Book</th>
+					<th>Action</th>
 				</tr>
 				
 				<!-- For each to loop and print items -->
@@ -46,6 +47,11 @@
 				
 					<!-- opção de clicar no item para checar mais informações -->
 					<c:url var="checkItem" value="/items/checkItem">
+						<c:param name="itemId" value="${tempItem.id}"></c:param>
+					</c:url>
+					
+					<!-- delete link with item id -->
+					<c:url var="deleteLink" value="/items/delete">
 						<c:param name="itemId" value="${tempItem.id}"></c:param>
 					</c:url>
 					
@@ -57,6 +63,10 @@
 						<td>${tempItem.rarity}</td>
 						<td>${tempItem.equipCategory}</td>
 						<td>${tempItem.sourceBook}</td>
+						
+						<td>
+							<a href="${deleteLink}" onclick="if(!(confirm('Are you sure you want to delete ${tempItem.itemName}?'))) return false">Delete</a>
+						</td>
 					</tr>
 				</c:forEach>
 				
