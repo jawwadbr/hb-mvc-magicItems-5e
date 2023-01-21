@@ -8,7 +8,9 @@ public interface MagicItemsDAO {
 	
 	public List<MagicItems> getMagicItems();
 
-	public MagicItems getMagicItems(int id);
+	public List<MagicItems> getMagicItems(String sortField);
+
+	public MagicItems getMagicItem(int id);
 
 	public void saveMagicItem(MagicItems item);
 

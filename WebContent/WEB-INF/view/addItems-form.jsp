@@ -44,16 +44,16 @@
 					<tr>
   						<td><label>Item Rarity:</label></td>
   						<td>
-					    <form:select path="rarity" name="rarity" selected="item.rarity">
-						  <form:option value="Common">Common</form:option>
-						  <form:option value="Uncommon">Uncommon</form:option>
-						  <form:option value="Rare">Rare</form:option>
-						  <form:option value="Very Rare">Very Rare</form:option>
-						  <form:option value="Legendary">Legendary</form:option>
-						  <form:option value="Varies">Varies</form:option>
-						  <form:option value="Artifact">Artifact</form:option>
-						</form:select>
-					  </td>
+					    	<form:select path="rarity" name="rarity" selected="item.rarity">
+					    		<form:option value="Common">Common</form:option>
+								<form:option value="Uncommon">Uncommon</form:option>
+								<form:option value="Rare">Rare</form:option>
+								<form:option value="Very Rare">Very Rare</form:option>
+								<form:option value="Legendary">Legendary</form:option>
+								<form:option value="Varies">Varies</form:option>
+								<form:option value="Artifact">Artifact</form:option>
+							</form:select>
+					  	</td>
 					</tr>
 					
 					<tr>

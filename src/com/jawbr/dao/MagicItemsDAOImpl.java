@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jawbr.entity.MagicItems;
+import com.jawbr.util.SortUtil;
 
 @Repository
 public class MagicItemsDAOImpl implements MagicItemsDAO {
@@ -34,7 +35,47 @@ public class MagicItemsDAOImpl implements MagicItemsDAO {
 	}
 
 	@Override
-	public MagicItems getMagicItems(int id) {
+	public List<MagicItems> getMagicItems(String sortField) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		// determine sort field
+		String fieldName = null;
+		
+		switch (sortField) {
+		case SortUtil.ITEM_NAME: {
+			fieldName = SortUtil.ITEM_NAME;
+			break;
+		}
+		case SortUtil.ITEM_RARITY: {
+			fieldName = SortUtil.ITEM_RARITY;
+			break;
+		}
+		case SortUtil.ITEM_CATEGORY: {
+			fieldName = SortUtil.ITEM_CATEGORY;
+			break;
+		}
+		case SortUtil.ITEM_SOURCE_BOOK: {
+			fieldName = SortUtil.ITEM_SOURCE_BOOK;
+			break;
+		}
+		default:
+			fieldName = "id";
+		}
+		
+		// create query
+		String queryString = "from MagicItems order by " + fieldName;
+		
+		Query<MagicItems> q = session.createQuery(queryString, MagicItems.class);
+		
+		// execute and get result list
+		List<MagicItems> sortedItems = q.getResultList();
+		
+		return sortedItems;
+	}
+
+	@Override
+	public MagicItems getMagicItem(int id) {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
@@ -54,10 +95,50 @@ public class MagicItemsDAOImpl implements MagicItemsDAO {
 		
 		Session session = sessionFactory.getCurrentSession();
 		
-		MagicItems delItem = getMagicItems(id);
+		MagicItems delItem = getMagicItem(id);
 		
 		session.delete(delItem);
 		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -24,8 +24,14 @@ public class MagicItemsServiceImpl implements MagicItemsService {
 
 	@Override
 	@Transactional
-	public MagicItems getMagicItems(int id) {
-		return magicItemsDAO.getMagicItems(id);
+	public List<MagicItems> getMagicItems(String sortField) {
+		return magicItemsDAO.getMagicItems(sortField);
+	}
+
+	@Override
+	@Transactional
+	public MagicItems getMagicItem(int id) {
+		return magicItemsDAO.getMagicItem(id);
 	}
 
 	@Override

@@ -34,9 +34,18 @@ public class MagicItemsController {
 	private EquipmentCategoryService equipCategoryService;
 	
 	@GetMapping("/list")
-	public String listMagicItems(Model model) {
+	public String listMagicItems(Model model, @RequestParam(value = "sortBy", required = false) String sort) {
 		
 		List<MagicItems> items  = magicItemService.getMagicItems();
+		
+		// add sort function
+		if(sort != null && !sort.equals("none")) {
+			// if sorted
+			items = magicItemService.getMagicItems(sort);
+			
+			model.addAttribute("sortSelected", sort);
+		}
+		// else do as normal
 		
 		model.addAttribute("magicItem", items);
 		
@@ -46,7 +55,7 @@ public class MagicItemsController {
 	@GetMapping("checkItem")
 	public String checkItem(@RequestParam("itemId") int id, Model model) {
 		
-		MagicItems item = magicItemService.getMagicItems(id);
+		MagicItems item = magicItemService.getMagicItem(id);
 		
 		SplitDescr.splitDescr(item);
 		
@@ -103,7 +112,7 @@ public class MagicItemsController {
 	@GetMapping("itemFormForUpdate")
 	public String itemFormForUpdate(@RequestParam("itemId") int id, Model model) {
 		
-		MagicItems item = magicItemService.getMagicItems(id);
+		MagicItems item = magicItemService.getMagicItem(id);
 		
 		SplitDescr.splitDescr(item);
 		
@@ -124,5 +133,10 @@ public class MagicItemsController {
 		model.addAttribute("equipC", new EquipmentCategory());
 		
 		return "addItems-form";
+	}
+	
+	@GetMapping("search")
+	public String searchMagicItem() {
+		return null;
 	}
 }

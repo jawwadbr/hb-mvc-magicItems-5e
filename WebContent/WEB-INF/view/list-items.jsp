@@ -32,6 +32,26 @@
 				onclick="window.location.href='formAddItems'; return false"
 				class="add-button" />
 			
+			<form:form action="search" method="GET">
+                Search Magic Items: <input type="text" name="theSearchName" />
+                
+                <input type="submit" value="Search" class="add-button" />
+            </form:form>
+			
+			<div id="sortType">
+				<form action="list" method="get">
+					<label for="sortBy">Sort By:</label>
+					<select name="sortBy" id="sortBy">
+						<option value="none" ${sortSelected == "none" ? "selected" : ""}>None</option>
+						<option value="itemName" ${sortSelected == "itemName" ? "selected" : ""}>Name</option>
+						<option value="rarity" ${sortSelected == "rarity" ? "selected" : ""}>Rarity</option>
+						<option value="equipCategory" ${sortSelected == "equipCategory" ? "selected" : ""}>Equipment Type</option>
+						<option value="sourceBook" ${sortSelected == "sourceBook" ? "selected" : ""}>Source Book</option>
+					</select>
+					<input type="submit" value="Sort" class="add-button">
+				</form>
+			</div>
+			
 			<!-- HTML table para listar os items -->
 			<table>
 				<tr>
