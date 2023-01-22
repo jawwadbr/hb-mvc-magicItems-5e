@@ -15,4 +15,6 @@ public interface MagicItemsDAO {
 	public void saveMagicItem(MagicItems item);
 
 	public void deleteMagicItem(int id);
+
+	public List<MagicItems> searchMagicItems(String searchName);
 }

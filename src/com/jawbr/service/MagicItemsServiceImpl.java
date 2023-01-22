@@ -46,4 +46,10 @@ public class MagicItemsServiceImpl implements MagicItemsService {
 		magicItemsDAO.deleteMagicItem(id);
 	}
 
+	@Override
+	@Transactional
+	public List<MagicItems> searchMagicItems(String searchName) {
+		return magicItemsDAO.searchMagicItems(searchName);
+	}
+
 }

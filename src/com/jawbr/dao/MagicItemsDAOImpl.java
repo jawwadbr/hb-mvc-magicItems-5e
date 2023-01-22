@@ -101,44 +101,27 @@ public class MagicItemsDAOImpl implements MagicItemsDAO {
 		
 	}
 
+	@Override
+	public List<MagicItems> searchMagicItems(String searchName) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query<MagicItems> q = null;
+		
+		//only search by name if searchName is not empty
+		if(searchName != null && searchName.trim().length() > 0) {
+			q = session.createQuery("from MagicItems where lower(itemName) like :itemName", MagicItems.class);
+
+			q.setParameter("itemName", "%"+searchName.toLowerCase()+"%");
+		}
+		else {
+			q = session.createQuery("from MagicItems order by id", MagicItems.class);
+		}
+		
+		// result list
+		List<MagicItems> items = q.getResultList();
+		
+		return items;
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

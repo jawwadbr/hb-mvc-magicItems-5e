@@ -18,6 +18,7 @@ import com.jawbr.service.EquipmentCategoryService;
 import com.jawbr.service.MagicItemsService;
 import com.jawbr.service.SourceBookService;
 import com.jawbr.util.SplitDescr;
+import com.jawbr.util.lineBreaksToDB;
 
 @Controller
 @RequestMapping("/items")
@@ -116,6 +117,8 @@ public class MagicItemsController {
 		
 		SplitDescr.splitDescr(item);
 		
+		item.setDescr_down(lineBreaksToDB.saveLineBreak(item.getDescr_down()));
+		
 		model.addAttribute("item", item);
 		
 		// Get all source books
@@ -136,7 +139,14 @@ public class MagicItemsController {
 	}
 	
 	@GetMapping("search")
-	public String searchMagicItem() {
-		return null;
+	public String searchMagicItem(Model model, @RequestParam("theSearchName") String searchName) {
+		
+		// search item
+		List<MagicItems> items = magicItemService.searchMagicItems(searchName);
+		
+		// add items to the model
+		model.addAttribute("magicItem", items);
+		
+		return "list-items";
 	}
 }

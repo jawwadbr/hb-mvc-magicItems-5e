@@ -33,7 +33,7 @@
 				class="add-button" />
 			
 			<form:form action="search" method="GET">
-                Search Magic Items: <input type="text" name="theSearchName" />
+                Search Magic Items by Name: <input type="text" name="theSearchName" />
                 
                 <input type="submit" value="Search" class="add-button" />
             </form:form>

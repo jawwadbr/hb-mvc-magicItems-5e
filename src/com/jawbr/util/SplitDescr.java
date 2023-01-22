@@ -9,7 +9,17 @@ public class SplitDescr {
 		if(item.getDescr_top() == "" || item.getDescr_top() == null) {
 			String[] s = item.getDescr().split("\n");
 			item.setDescr_top(s[0]);
-			item.setDescr_down(s[1]);
+			//item.setDescr_down(s[1]);
+			
+			String down = null;
+			for (int i=1; i<s.length; i++) {
+				if(down == null)
+					down = s[i];
+				else
+					down = down+"<br>"+s[i];
+			}
+			
+			item.setDescr_down(down);
 		}
 	}
 }
