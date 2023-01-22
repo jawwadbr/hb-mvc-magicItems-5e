@@ -6,6 +6,10 @@
 <head>
 	
 	<title>D&amp;D 5e Magic Items</title>
+	
+	<link type="text/css" 
+			rel="stylesheet" 
+			href="${pageContext.request.contextPath}/resources/css/checkItem.css" /> 
 
 </head>
 
@@ -30,10 +34,10 @@
 		<br>
 		<h1>Attributes</h1>
 		<div id="pgAttributes">
-			<div>
+			<div id="ItCat">
 				Category: ${item.equipCategory}
 			</div>
-			<div>
+			<div id="ItRar">
 				Item Rarity: ${item.rarity}
 			</div>
 		</div>

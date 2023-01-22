@@ -18,7 +18,12 @@
 	<context:component-scan base-package="com.jawbr" />
 
 	<!-- Add support for conversion, formatting and validation support -->
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven validator="validator-adapter"/>
+	<bean id="validator-adapter" 
+  		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+    	<property name="providerClass"
+              value="org.hibernate.validator.HibernateValidator" />
+	</bean>
 
 	<!-- Define Spring MVC view resolver -->
 	<bean

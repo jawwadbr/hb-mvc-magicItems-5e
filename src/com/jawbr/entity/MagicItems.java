@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "magic_items")
@@ -21,9 +23,12 @@ public class MagicItems {
 	@Column(name = "id")
 	private int id;
 	
+	@NotNull(message = "Index Name is required")
 	@Column(name = "indexname")
 	private String indexName;
 	
+	@NotNull(message = "Name is required")
+	@Size(min = 1, message = "Name size must be atleast 1")
 	@Column(name = "name")
 	private String itemName;
 	
@@ -44,8 +49,13 @@ public class MagicItems {
 	@JoinColumn(name = "source_name_fk")
 	private SourceBook sourceBook;
 	
+	@NotNull(message = "Attribute is required")
 	@Transient
-	private String descr_top, descr_down;
+	private String descr_top;
+	
+	@NotNull(message = "Description is required")
+	@Transient
+	private String descr_down;
 	
 	public MagicItems() {}
 
@@ -148,6 +158,10 @@ public class MagicItems {
 
 	public void setDescr_down(String descr_down) {
 		this.descr_down = descr_down;
+	}
+	
+	public void generateAPIUrl() {
+		url = "/api/magic-items/"+indexName;
 	}
 
 	@Override

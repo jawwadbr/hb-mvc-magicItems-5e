@@ -2,10 +2,16 @@ package com.jawbr.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,33 +78,29 @@ public class MagicItemsController {
 		
 		model.addAttribute("item" ,item);
 		
-		// Get all source books
-		List<SourceBook> source_bookList = sourceBookService.getSourceBook();
-		
-		// add books in model
-		model.addAttribute("source_bookList", source_bookList);
-		model.addAttribute("book", new SourceBook());
-		
-		// Get all equipCategory
-		List<EquipmentCategory> equip_list = equipCategoryService.getEquipmentCategory();
-		
-		// add equipCaegory in model
-		model.addAttribute("equip_list", equip_list);
-		model.addAttribute("equipC", new EquipmentCategory());
+		setEquipAndSourceIntoModel(model);
 		
 		return "addItems-form";
 	}
 	
 	@PostMapping("saveItem")
-	public String saveItem(@ModelAttribute("item") MagicItems item) {
+	public String saveItem(@Valid @ModelAttribute("item") MagicItems item, BindingResult bindingResult, Model model) {
 		
-		String tempDescr = item.getDescr_top() + "\n" + item.getDescr_down();
-		item.setDescr(tempDescr);
-		
-		// Save new item
-		magicItemService.saveMagicItem(item);
-		
-		return "redirect:/items/list";
+		if(bindingResult.hasErrors()) {
+			setEquipAndSourceIntoModel(model);
+			return "addItems-form";
+		}
+		else {
+			
+			String tempDescr = item.getDescr_top() + "\n" + item.getDescr_down();
+			item.setDescr(tempDescr);
+			item.generateAPIUrl();
+			
+			// Save new item
+			magicItemService.saveMagicItem(item);
+			
+			return "redirect:/items/list";
+		}
 	}
 	
 	@GetMapping("/delete")
@@ -121,6 +123,34 @@ public class MagicItemsController {
 		
 		model.addAttribute("item", item);
 		
+		setEquipAndSourceIntoModel(model);
+		
+		return "addItems-form";
+	}
+	
+	// Param required=false because of the InitBinder, if searchName is empty it will turn null then we need to make sure it does not throw an exeption
+	@GetMapping("search")
+	public String searchMagicItem(Model model, @RequestParam(value = "theSearchName", required = false) String searchName) {
+		
+		// search item
+		List<MagicItems> items = magicItemService.searchMagicItems(searchName);
+		
+		// add items to the model
+		model.addAttribute("magicItem", items);
+		
+		return "list-items";
+	}
+	
+	// Convenience Methods
+	
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		StringTrimmerEditor ste = new StringTrimmerEditor(true);
+		
+		dataBinder.registerCustomEditor(String.class, ste);
+	}
+	
+	public void setEquipAndSourceIntoModel(Model model) {
 		// Get all source books
 		List<SourceBook> source_bookList = sourceBookService.getSourceBook();
 				
@@ -134,19 +164,5 @@ public class MagicItemsController {
 		// add equipCaegory in model
 		model.addAttribute("equip_list", equip_list);
 		model.addAttribute("equipC", new EquipmentCategory());
-		
-		return "addItems-form";
-	}
-	
-	@GetMapping("search")
-	public String searchMagicItem(Model model, @RequestParam("theSearchName") String searchName) {
-		
-		// search item
-		List<MagicItems> items = magicItemService.searchMagicItems(searchName);
-		
-		// add items to the model
-		model.addAttribute("magicItem", items);
-		
-		return "list-items";
 	}
 }

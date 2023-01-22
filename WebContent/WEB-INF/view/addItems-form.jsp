@@ -7,6 +7,15 @@
 <head>
 
 	<title>D&amp;D 5e Magic Items</title>
+	
+	<link type="text/css" 
+			rel="stylesheet" 
+			href="${pageContext.request.contextPath}/resources/css/addItem.css" /> 
+			
+	<style>
+		.error {color:red}
+		
+	</style>
 
 </head>
 
@@ -17,7 +26,7 @@
 		</div>
 	</div>
 	
-	<div>
+	<div id="saveForm">
 		<h3>Save Magic Item</h3>
 		
 		<form:form action="saveItem" modelAttribute="item" method="POST">
@@ -28,17 +37,24 @@
 				<tbody>
 					<tr>
 						<td><label>Item Name:</label></td>
-						<td><form:input path="itemName" /></td>
+						<td><form:input path="itemName" />
+							<form:errors path="itemName" cssClass="error"/>
+						</td>
+						
 					</tr>
 					
 					<tr>
 						<td><label>Attributes:</label></td>
-						<td><form:textarea path="descr_top" rows="3" cols="50"/></td>
+						<td><form:textarea path="descr_top" rows="3" cols="50"/>
+							<form:errors path="descr_top" cssClass="error"/>
+						</td>
 					</tr>
 					
 					<tr>
 						<td><label>Description:</label></td>
-						<td><form:textarea path="descr_down" rows="10" cols="50"/></td>
+						<td><form:textarea path="descr_down" rows="10" cols="50"/>
+							<form:errors path="descr_down" cssClass="error"/>
+						</td>
 					</tr>
 					
 					<tr>
@@ -71,12 +87,11 @@
 					
 					<tr>
 						<td><label>Index Name:</label></td>
-						<td><form:input path="indexName" /></td>
-					</tr>
+						<td>
+							<form:input path="indexName" />
+							<form:errors path="indexName" cssClass="error"/>
+						</td>
 					
-					<tr>
-						<td><label>API Url:</label></td>
-						<td><form:input path="url" /></td>
 					</tr>
 					
 					<tr>
